@@ -1,0 +1,4 @@
+azul : #113A70
+blanco: #FFFAFE
+verde: #6CB62C
+verde claro: #C7D727
