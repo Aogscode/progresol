@@ -13,8 +13,8 @@ function validar() {
 	var telefono = document.querySelector("#telfMaestro").value;
 
 	var email = document.querySelector("#emailMaestro").value;
-	
-	
+
+
 
 function valida(F) {
 if(/^\s+|\s+$/.test(F.campo.value)) {
@@ -153,7 +153,7 @@ return true;
 
 			var caracteres = telefono.length;
 
-			if (caracteres > 9) {
+			if (caracteres > 9 ) {
 
 		alert("su Télefono debe tener 9 digitos");
 
@@ -161,6 +161,20 @@ return true;
 			}
 
 		}	
+
+		if (telefono !="") {
+
+			var caracteres = telefono.length;
+
+			if (caracteres < 9 ) {
+
+		alert("su Télefono debe tener  ok 9 digitos");
+
+					return false;
+			}
+
+		}	
+
 
 			if (isNaN(telefono)) {
 
@@ -191,7 +205,19 @@ return true;
 		var passM = document.querySelector("#usuarioPassword").value;
 		var passM2 = document.querySelector("#usuarioPassword2").value;
 
+    			/* validacion para las contraseñas sean iguales*/
 
+    			if(passM == passM2){
+    			
+    				return true;
+    			}
+    			else
+    			{
+
+    				alert("Las contraseñas no coinciden");
+
+    				return false;
+    			}
 		/*validacion para el dni*/
 
 				if (dni !="") {
@@ -380,7 +406,7 @@ return true;
 
 
 
-	/*validaciones para los campos de registro de usuarios*/
+	/*validaciones para los campos de registro de ferreterias*/
 
 
 	function validar3() {
@@ -395,7 +421,6 @@ return true;
 		var apeMF = document.querySelector("#apematFerreteria").value;
 		var telefonoF = document.querySelector("#telfFerreteria").value;
 
-
 			/*validacion para el codigo de promotick*/ 
 
 
@@ -406,6 +431,7 @@ return true;
 			if (caracteres > 10) {
 
 		alert("El codigo debe tener 10 caracteres minimo");
+
 					return false;
 			}
 		}

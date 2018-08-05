@@ -33,7 +33,7 @@ if(!$_SESSION["validar"]){
   $(document).ready(function(){
     
     var datos = {
-      labels : ["Enero", "Febrero", "Marzo", "Abril", "Mayo"],
+      labels : ["Enero", "Febrero", "Marzo", "Abril", "Mayo","junio"],
       datasets : [{
         label : "datos 1",
         backgroundColor : "rgba(220,220,220,0.5)",
