@@ -18,8 +18,8 @@ function validar() {
 
 function valida(F) {
 if(/^\s+|\s+$/.test(F.campo.value)) {
-alert("Introduzca un cadena de texto.")
-return false
+alert("No se permite espacios en blanco");
+return false;
 } else {
 alert("OK")
 //cambiar la linea siguiente por return true para que ejecute la accion del formulario
@@ -32,7 +32,7 @@ return true;
 		if (nombre !="") {
 
 			var caracteres = nombre.length;
-			var expresion  = /^[a-zA-Z]\s+|\s+$/;
+			var expresion  = /^[a-zA-Z]/;
 
 			if (caracteres < 3 || caracteres > 15) {
 
@@ -168,7 +168,7 @@ return true;
 
 			if (caracteres < 9 ) {
 
-		alert("su Télefono debe tener  ok 9 digitos");
+		alert("su Télefono debe tener 9 digitos");
 
 					return false;
 			}
@@ -225,6 +225,19 @@ return true;
 			var caracteres = dni.length;
 
 			if (caracteres > 8) {
+
+		alert("su DNI debe tener 8 digitos");
+
+					return false;
+			}
+
+		}	
+
+				if (dni !="") {
+
+			var caracteres = dni.length;
+
+			if (caracteres < 8) {
 
 		alert("su DNI debe tener 8 digitos");
 
@@ -319,7 +332,7 @@ return true;
 			/*validacion para el telefono*/
 
 
-		if (telefonoM !="") {
+				if (telefonoM !="") {
 
 			var caracteres = telefonoM.length;
 
@@ -331,6 +344,19 @@ return true;
 			}
 
 		}	
+
+				if (telefonoM !="") {
+
+			var caracteres = telefonoM.length;
+
+			if (caracteres < 9) {
+
+		alert("su Télefono debe tener 9 digitos");
+
+					return false;
+			}
+
+		}
 
 			if (isNaN(telefonoM)) {
 
@@ -488,6 +514,19 @@ return true;
 
 		}	
 
+				if (dniF !="") {
+
+			var caracteres = dniF.length;
+
+			if (caracteres < 9) {
+
+		alert("su DNI debe tener 9 digitos");
+
+					return false;
+			}
+
+		}
+
 			if (isNaN(dniF)) {
 
 				alert("El DNI ingresado no es un número");
@@ -575,7 +614,7 @@ return true;
 		/*validacion para el telefono*/
 
 
-		if (telefonoF !="") {
+				if (telefonoF !="") {
 
 			var caracteres = telefonoF.length;
 
@@ -587,6 +626,20 @@ return true;
 			}
 
 		}	
+
+
+				if (telefonoF !="") {
+
+			var caracteres = telefonoF.length;
+
+			if (caracteres < 9) {
+
+		alert("su Télefono debe tener 9 digitos");
+
+					return false;
+			}
+
+		}
 
 			if (isNaN(telefonoF)) {
 
