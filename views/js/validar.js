@@ -16,23 +16,23 @@ function validar() {
 
 
 
-function valida(F) {
-if(/^\s+|\s+$/.test(F.campo.value)) {
-alert("No se permite espacios en blanco");
-return false;
-} else {
-alert("OK")
-//cambiar la linea siguiente por return true para que ejecute la accion del formulario
-return true;
-}
-}
+				/*validacion para campos en blancos*/
 
-	/*validacion para nombres*/
+		if( nombre == null || nombre.length == 0 || /^\s+$/.test(nombre) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
+
+
+		/*validacion para nombres*/
 
 		if (nombre !="") {
 
 			var caracteres = nombre.length;
-			var expresion  = /^[a-zA-Z]/;
+			var expresion  = /^[a-zA-Z]+$/;
 
 			if (caracteres < 3 || caracteres > 15) {
 
@@ -53,6 +53,14 @@ return true;
 
 
 		/*validacion para apellido paterno*/
+
+		if( apellidoP == null || apellidoP.length == 0 || /^\s+$/.test(apellidoP) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
 
 		if (apellidoP !="") {
 
@@ -78,6 +86,16 @@ return true;
 
     	/*validacion para apellido materno*/
 
+
+		if( apellidoM == null || apellidoM.length == 0 || /^\s+$/.test(apellidoM) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
+
+
     	if (apellidoM !="") {
 
 			var caracteres = apellidoM.length;
@@ -100,6 +118,14 @@ return true;
 	/* fin validacion apellido materno*/
 
 	/*validacion para la direccion*/
+
+	if( direccion == null || direccion.length == 0 || /^\s+$/.test(direccion) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
 
 		if (direccion !="") {
 
@@ -147,6 +173,14 @@ return true;
 
 
 		/*validacion para el telefono*/
+
+		if( telefono == null || telefono.length == 0 || /^\s+$/.test(telefono) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
 
 
 		if (telefono !="") {
@@ -206,6 +240,13 @@ return true;
 		var passM2 = document.querySelector("#usuarioPassword2").value;
 
     			/* validacion para las contraseñas sean iguales*/
+    			if( passM == null || passM.length == 0 || /^\s+$/.test(passM) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
 
     			if(passM == passM2){
     			
@@ -219,6 +260,14 @@ return true;
     				return false;
     			}
 		/*validacion para el dni*/
+
+		if( dni == null || dni.length == 0 || /^\s+$/.test(dni) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
 
 				if (dni !="") {
 
@@ -259,6 +308,15 @@ return true;
 
 				/*validacion para nombres*/
 
+
+		if( nombreM == null || nombreM.length == 0 || /^\s+$/.test(nombreM) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
+
 		if (nombreM !="") {
 
 			var caracteres = nombreM.length;
@@ -281,9 +339,15 @@ return true;
 
 				/* fin validacion nombre*/
 
-
-
 		/*validacion para apellido paterno*/
+
+		if( apepaM == null || apepaM.length == 0 || /^\s+$/.test(apepaM) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
 
 		if (apepaM !="") {
 
@@ -308,6 +372,14 @@ return true;
 
 			/*validacion para apellido materno*/
 
+			if( apemaM == null || apemaM.length == 0 || /^\s+$/.test(apemaM) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
+
     	if (apemaM !="") {
 
 			var caracteres = apemaM.length;
@@ -330,6 +402,14 @@ return true;
 		/* fin validacion apellido materno*/
 
 			/*validacion para el telefono*/
+
+			if( telefonoM == null || telefonoM.length == 0 || /^\s+$/.test(telefonoM) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
 
 
 				if (telefonoM !="") {
@@ -369,6 +449,15 @@ return true;
 
 		/*validacion para el email*/ 
 
+		if( emailM == null || emailM.length == 0 || /^\s+$/.test(emailM) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
+
+
 			if (emailM !="") {
 
 			var caracteres = emailM.length;
@@ -399,6 +488,15 @@ return true;
 
 		/*validacion para la contraseña*/ 
 
+		if( passM == null || passM.length == 0 || /^\s+$/.test(passM) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
+
+				
 			if (passM !="") {
 
 			var caracteres = passM.length;
@@ -411,7 +509,6 @@ return true;
 		}
 
 
-
 			if ( !passM == passM2 ) {
 
 
@@ -421,12 +518,9 @@ return true;
 
 			}
 
-
 		/* fin validacion contraseña*/
 
-
 		return true;
-
 
 	}
 
@@ -449,6 +543,14 @@ return true;
 
 			/*validacion para el codigo de promotick*/ 
 
+			if( codigoP == null || codigoP.length == 0 || /^\s+$/.test(codigoP) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
+
 
 		if (codigoP !="") {
 
@@ -465,6 +567,14 @@ return true;
 			/* fin validacion de codigo promotick*/
 
 			/*validacion para la razon social*/
+
+			if( rsocial == null || rsocial.length == 0 || /^\s+$/.test(rsocial) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
 
 				if (rsocial !="") {
 
@@ -483,6 +593,15 @@ return true;
 
 			/*validacion para la direccion*/
 
+			if( direccionF == null || direccionF.length == 0 || /^\s+$/.test(direccionF) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
+
+
 		if (direccionF !="") {
 
 			var caracteres = direccionF.length;
@@ -500,6 +619,14 @@ return true;
 
 
 		/*validacion para el dni*/
+
+		if( dniF == null || dniF.length == 0 || /^\s+$/.test(dniF) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
 
 				if (dniF !="") {
 
@@ -539,6 +666,14 @@ return true;
 
 			/*validacion para nombres*/
 
+			if( usuarioF == null || usuarioF.length == 0 || /^\s+$/.test(usuarioF) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
+
 		if (usuarioF !="") {
 
 			var caracteres = usuarioF.length;
@@ -563,6 +698,14 @@ return true;
 
 
 			/*validacion para apellido paterno*/
+
+			if( apePF == null || apePF.length == 0 || /^\s+$/.test(apePF) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
 
 		if (apePF !="") {
 
@@ -589,6 +732,14 @@ return true;
 
 			/*validacion para apellido materno*/
 
+			if( apeMF == null || apeMF.length == 0 || /^\s+$/.test(apeMF) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
+
     	if (apeMF !="") {
 
 			var caracteres = apeMF.length;
@@ -612,6 +763,14 @@ return true;
 
 
 		/*validacion para el telefono*/
+
+		if( telefonoF == null || telefonoF.length == 0 || /^\s+$/.test(telefonoF) ) {
+
+				alert("No se pueden dejar espacios en blancos");
+
+  				return false;
+
+				}
 
 
 				if (telefonoF !="") {
