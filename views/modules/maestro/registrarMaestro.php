@@ -49,7 +49,7 @@
   <!-- FORMULARIO 2 - CAPTURA DE DATOS PARA REGISTRO-->
   <div class="row">
     <div class="col-md-9">
-      <form id="registro-maestro" action="" onsubmit="return validar() ">
+      <form id="registro-maestro" method="post" onsubmit="return validar() ">
         <div class="form-group">
           <label for="dniRegistro">Documento de Identidad (DNI)</label>
           <input type="text" id="dniRegistro" name="dniRegistro" class="form-control" disabled>
@@ -107,7 +107,7 @@
         </div>
         
         <div class="form-group">
-          <button type="submit" id="btnRegistrarMaestro" class="btn btn-primary btn-lg btn-block">Registrar maestro</button>
+          <button type="submit" name="btnRegistrarMaestro" id="btnRegistrarMaestro" class="btn btn-primary btn-lg btn-block">Registrar maestro</button>
         </div>
 
       </form>

@@ -43,6 +43,7 @@ class MvcController{
 				$_SESSION["validar"] = true;
 				$_SESSION["usuario"] = $respuesta["name"]." ".$respuesta["lastname"];
 				$_SESSION["empresa"] = $respuesta["company"];
+				$_SESSION["lucky"] = $respuesta["idlucky"];
 				$_SESSION["id"] = $respuesta["id"];
 				$_SESSION["perfil"] = $respuesta["profile"];
 
@@ -130,6 +131,21 @@ class MvcController{
 
 		return $respuesta;
 	}
-	
+
+	#REGISTRAR MAESTRO
+	#-------------------------------------
+	public function registrarMaestroController($dniC, $nombreC, $apepatC, $apematC, $direcC, $telfC, $emailC){
+
+		//ejecuto un session_start para poder acceder a las variables de sesion
+		session_start();
+		$userC 		= $_SESSION["id"];
+		$companyC 	= $_SESSION["empresa"];
+		$luckyC 	= $_SESSION["lucky"];
+
+		$respuesta = Datos::registrarMaestroModel($userC, $companyC, $luckyC, $dniC, 
+							$nombreC, $apepatC, $apematC, $direcC, $telfC, $emailC);
+
+		return $respuesta;
+	}
 }
  ?>

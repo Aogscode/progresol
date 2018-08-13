@@ -50,7 +50,7 @@
   <!-- FORMULARIO 2 - CAPTURA DE DATOS PARA REGISTRO-->
   <div class="row">
     <div class="col-md-9">
-      <form id="registrar-puntos" action="">
+      <form id="registrar-puntos" method="post">
 
         <input type="text" id="ptosId" name="ptosId" class="form-control" disabled hidden>
 
