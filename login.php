@@ -53,7 +53,7 @@
     <div id="loginMessage"></div>
   </div>
   <!-- Bootstrap core JavaScript-->
-   <!--<script src="views/vendor/jquery/jquery.min.js"></script>--> 
+   <!--<script src="views/vendor/jquery/jquery.min.js"></script>-->
 
   <script src="views/js/jquery-3.0.0.min.js"></script>
   <script src="views/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

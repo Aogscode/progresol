@@ -1,22 +1,22 @@
-<?php 
+<?php
 
-  if(!$_SESSION["validar"]){
+if (!$_SESSION["validar"]) {
 
-  header("location:ingresar");
+    header("location:ingresar");
 
-  exit();
+    exit();
 
-  }
+}
 
- ?>
+?>
 <div class="container-fluid">
   <!-- Breadcrumbs-->
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
       <a href="index.php">
-        <?php 
-          echo $_SESSION["usuario"];
-         ?>
+        <?php
+echo $_SESSION["usuario"];
+?>
       </a>
     </li>
     <li class="breadcrumb-item active">Registrar Maestro</li>
@@ -37,7 +37,7 @@
           <input type="text" id="dni" name="dni" class="form-control" placeholder="Documento de Identidad (DNI) " required>
           <span class="input-group-btn">
           <button id="btnConsultarDni" class="btn btn-default" type="submit">
-            <i class="fa fa-search"></i> 
+            <i class="fa fa-search"></i>
           </button>
         </div>
       </form>
@@ -45,11 +45,10 @@
     </div>
   </div>
   <!-- FORMULARIO 1 - CONSULTA DE DNI -->
-
   <!-- FORMULARIO 2 - CAPTURA DE DATOS PARA REGISTRO-->
   <div class="row">
     <div class="col-md-9">
-      <form id="registro-maestro" method="post" onsubmit="return validar() ">
+      <form id="registro-maestro" method="POST" onsubmit="return validar() ">
         <div class="form-group">
           <label for="dniRegistro">Documento de Identidad (DNI)</label>
           <input type="text" id="dniRegistro" name="dniRegistro" class="form-control" disabled>
@@ -105,14 +104,28 @@
           <label for="emailMaestro">Email</label>
           <input type="email" placeholder="Introduzca su Email" id="emailMaestro" name="emailMaestro" class="form-control" required>
         </div>
-        
-        <div class="form-group">
-          <button type="submit" name="btnRegistrarMaestro" id="btnRegistrarMaestro" class="btn btn-primary btn-lg btn-block">Registrar maestro</button>
-        </div>
 
+        <div class="form-group">
+          <button type="submit" id="btnRegistrarMaestro" class="btn btn-primary btn-lg btn-block">Registrar maestro</button>
+        </div>
       </form>
     </div>
   </div>
-  <!-- FORMULARIO 2 - CAPTURA DE DATOS PARA REGISTRO-->
 
-</div>
+<?php
+
+$registo = new MvcController();
+$registo->registroMaestroController($_SESSION["id"], $_SESSION["lucky"]);
+
+if (isset($_GET["action"])) {
+
+    if ($_GET["action"] == "ok") {
+
+        echo "Registro Exitoso";
+        /*} else {
+    echo $registo;*/
+    }
+}
+
+?>
+

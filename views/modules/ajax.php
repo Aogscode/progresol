@@ -1,183 +1,139 @@
-<?php 
+<?php
 
 require_once "../../controllers/controller.php";
+require_once "../../models/conexion.php";
 require_once "../../models/crud.php";
 
-class Ajax{
-	//Variables para ingreso al sistema
-	public $usuario;
-	public $clave;
+class Ajax
+{
+    //Variables para ingreso al sistema
+    public $usuario;
+    public $clave;
 
-	public function validarIngresoAjax(){
-		
-		$user = $this->usuario;
-		$pass = $this->clave;
+    public function validarIngresoAjax()
+    {
 
-		$respuesta = MvcController::validarIngresoController($user, $pass);
+        $user = $this->usuario;
+        $pass = $this->clave;
 
-		echo $respuesta;
-	}
+        $respuesta = MvcController::validarIngresoController($user, $pass);
 
-	public function consultarLuckyAjax($codLucky){
-		$lucky = $codLucky;
+        echo $respuesta;
+    }
 
-		$respuesta = MvcController::consultarLuckyController($lucky);
+    public function consultarLuckyAjax($codLucky)
+    {
+        $lucky = $codLucky;
 
-		echo $respuesta;
-	}
+        $respuesta = MvcController::consultarLuckyController($lucky);
 
-	public function consultarDniAjax($numdoc){
+        echo $respuesta;
+    }
 
-		$docide = $numdoc;
+    public function consultarDniAjax($numdoc)
+    {
 
-		$respuesta = MvcController::consultarDniController($docide);
+        $docide = $numdoc;
 
-		echo $respuesta;
-	}
+        $respuesta = MvcController::consultarDniController($docide);
 
-	public function llenarZonasAjax(){
-		
-		$respuesta = MvcController::llenarZonasController();
+        echo $respuesta;
+    }
 
-		echo $respuesta;
-	}
+    public function llenarZonasAjax()
+    {
 
-	public function llenarProductosAjax(){
+        $respuesta = MvcController::llenarZonasController();
 
-		$respuesta = MvcController::llenarProductosController();
+        echo $respuesta;
+    }
 
-		echo $respuesta;
-	}
+    public function llenarProductosAjax()
+    {
 
-	public function buscarMaestroAjax($numdoc){
+        $respuesta = MvcController::llenarProductosController();
 
-		$jsondata = array();
+        echo $respuesta;
+    }
 
-		$docide = $numdoc;
+    public function buscarMaestroAjax($numdoc)
+    {
 
-		$respuesta = MvcController::buscarMaestroController($docide);
+        $jsondata = array();
 
-		if ($respuesta["id"]>0) {
-			$jsondata["correcto"] = true;
-			$jsondata["codMaestro"] = $respuesta["id"];
-			$jsondata["dni"] = $respuesta["dni"];
-			$jsondata["nombres"] = $respuesta["name"];
-			$jsondata["apepat"] = $respuesta["lastname1"];
-			$jsondata["apemat"] = $respuesta["lastname2"];
-			$jsondata["ptosVal"] = "0";
-			$jsondata["ptosPend"] = "0";
+        $docide = $numdoc;
 
-		}else{
-			$jsondata["correcto"] = false;
-		}
+        $respuesta = MvcController::buscarMaestroController($docide);
 
-		header('Content-type: application/json; charset=utf-8');
-  		echo json_encode($jsondata, JSON_FORCE_OBJECT);
-		//echo $respuesta["name"];
-	}
+        if ($respuesta["id"] > 0) {
+            $jsondata["correcto"]   = true;
+            $jsondata["codMaestro"] = $respuesta["id"];
+            $jsondata["dni"]        = $respuesta["dni"];
+            $jsondata["nombres"]    = $respuesta["name"];
+            $jsondata["apepat"]     = $respuesta["lastname1"];
+            $jsondata["apemat"]     = $respuesta["lastname2"];
+            $jsondata["ptosVal"]    = "0";
+            $jsondata["ptosPend"]   = "0";
 
-	public function registrarMaestroAjax($dni, $nombre, $apepat, $apemat, $direc, $telf, $email){
-		//Declaro array para JSON
-		$jsondata = array();
+        } else {
+            $jsondata["correcto"] = false;
+        }
 
-		$respuesta = MvcController::registrarMaestroController($dni, $nombre, $apepat, $apemat, $direc, $telf, $email);
-
-		if ($respuesta["success"] == 1) {
-			//asigno valor a exito que sera consultada en el retorno del ajax
-			$jsondata["exito"] = true;
-			
-		}else{
-			$jsondata["exito"] = false;
-			$jsondata["msg"] = $respuesta["message"];
-		}
-
-		//Asgino formato JSON para devolver el array y que pueda ser leido por el ajax
-		header('Content-type: application/json; charset=utf-8');
-  		echo json_encode($jsondata, JSON_FORCE_OBJECT);
-	}
+        header('Content-type: application/json; charset=utf-8');
+        echo json_encode($jsondata, JSON_FORCE_OBJECT);
+        //echo $respuesta["name"];
+    }
 }
 
 /* ---------------------------
 VALIDA EL INGRESO AL SISTEMA
 ------------------------------*/
 if (isset($_POST["validarUsuario"]) && isset($_POST["validarClave"])) {
-	$a = new Ajax();
-	$a -> usuario = $_POST["validarUsuario"];
-	$a -> clave = $_POST["validarClave"];
-	$a -> validarIngresoAjax();
+    $a          = new Ajax();
+    $a->usuario = $_POST["validarUsuario"];
+    $a->clave   = $_POST["validarClave"];
+    $a->validarIngresoAjax();
 }
 
 /* -------------------------------
 CONSULTA SI EXISTE LA FERRETERIA
 ----------------------------------*/
-if (isset($_POST["codLucky"])){
-	$codLucky = $_POST["codLucky"];
-	$a = new Ajax();
-	$a -> consultarLuckyAjax($codLucky);
+if (isset($_POST["codLucky"])) {
+    $codLucky = $_POST["codLucky"];
+    $a        = new Ajax();
+    $a->consultarLuckyAjax($codLucky);
 }
 
 /* ---------------------------------------
 LLENADO DE COMBOBOX ZONA
 ------------------------------------------*/
-if (isset($_POST["lista"]) && $_POST["lista"] == "zonas"){
-	$a = new Ajax();
-	$a -> llenarZonasAjax();
+if (isset($_POST["lista"]) && $_POST["lista"] == "zonas") {
+    $a = new Ajax();
+    $a->llenarZonasAjax();
 }
 
 /* ---------------------------------------
 LLENADO DE COMBOBOX PRODUCTOS
 ------------------------------------------*/
-if (isset($_POST["lista"]) && $_POST["lista"] == "productos"){
-	$a = new Ajax();
-	$a -> llenarProductosAjax();
+if (isset($_POST["lista"]) && $_POST["lista"] == "productos") {
+    $a = new Ajax();
+    $a->llenarProductosAjax();
 }
 
 /* ---------------------------------------
 CONSULTA SI EXISTE EL MAESTRO EN LA BBDD
 ------------------------------------------*/
-if (isset($_POST["dni"])){
-	$dni = $_POST["dni"];
-	$a = new Ajax();
-	$a -> consultarDniAjax($dni);
+if (isset($_POST["dni"])) {
+    $dni = $_POST["dni"];
+    $a   = new Ajax();
+    $a->consultarDniAjax($dni);
 }
 
 /* ---------------------------------------
 BUSCA EL MAESTRO Y TRAE SUS DATOS
 ------------------------------------------*/
-if (isset($_POST["buscaDni"])){
-	$dni = $_POST["buscaDni"];
-	$a = new Ajax();
-	$a -> buscarMaestroAjax($dni);
-}
-
-/* ---------------------------------------
-REGISTRAR MAESTRO DE OBRA
-------------------------------------------*/
-if(isset($_POST["dniMaestro"]) && isset($_POST["telfMaestro"])){
-	//$registro = array(
-		$dniMaestro 	= $_POST["dniMaestro"];
-		$nombreMaestro 	= $_POST["nombreMaestro"];
-		$apepatMaestro 	= $_POST["apepatMaestro"];
-		$apematMaestro 	= $_POST["apematMaestro"];
-		$dirMaestro 	= $_POST["dirMaestro"];
-		$telfMaestro 	= $_POST["telfMaestro"];
-		$emailMaestro 	= $_POST["emailMaestro"];
-
-		/*
-		$jsondata["exito"] = false;
-
-		session_start();
-		if (isset($_SESSION["validar"])) {
-			$jsondata["msg"] = $_SESSION["lucky"]." ".$nombreMaestro;
-		}else{
-			$jsondata["msg"] = "Error en lucky ".$nombreMaestro;
-		}
-
-
-		header('Content-type: application/json; charset=utf-8');
-  		echo json_encode($jsondata, JSON_FORCE_OBJECT);*/
-		
-	$a = new Ajax();
-	$a -> registrarMaestroAjax($dniMaestro,$nombreMaestro,$apepatMaestro,
-								$apematMaestro,$dirMaestro,$telfMaestro,$emailMaestro);
+if (isset($_POST["buscaDni"])) {
+    $dni = $_POST["buscaDni"];
+    $a   = new Ajax();
+    $a->buscarMaestroAjax($dni);
 }

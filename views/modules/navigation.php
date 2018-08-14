@@ -1,5 +1,5 @@
 <style type="text/css">
-  
+
 .navbar-dark .navbar-collapse .navbar-sidenav {
 
     background: #103A71!important;
@@ -53,7 +53,7 @@
       <li>
         <a href="registrarMaestro" >Registrar maestro</a>
       </li>
-      <li> 
+      <li>
         <a href="consultarMaestro">Consultar maestro</a>
       </li>
       <li>
@@ -146,7 +146,7 @@
         </ul>
       </li>
     </ul>
-  </li> 
+  </li>
 
   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
     <a class="nav-link" href="#">

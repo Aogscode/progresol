@@ -5,14 +5,14 @@
       <div class="input-group">
         <button type="button" class="btn btn-secondary">
           <?php
-            echo $_SESSION["empresa"];
-           ?>
+echo $_SESSION["empresa"];
+?>
         </button>
       </div>
-             
+
     </form>
   </li>
-  
+
   <li class="nav-item">
     <a class="nav-link" style="color: black;" href="salir">
       <i class="fa fa-fw fa-sign-out" style="color: black;"></i>Salir</a>
@@ -20,7 +20,7 @@
 </ul>
 
 <style type="text/css">
-  
+
 
 .bg-dark {
 

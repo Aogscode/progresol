@@ -1,14 +1,14 @@
-<?php 
+<?php
 
-if(!$_SESSION["validar"]){
+if (!$_SESSION["validar"]) {
 
-  header("location:ingresar");
+    header("location:ingresar");
 
-  exit();
+    exit();
 
 }
 
- ?>
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,9 +16,9 @@ if(!$_SESSION["validar"]){
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
       <a href="index.php">
-        <?php 
-          echo $_SESSION["usuario"];
-         ?>
+        <?php
+echo $_SESSION["usuario"];
+?>
       </a>
     </li>
     <li class="breadcrumb-item active">Dashboard</li>
@@ -31,7 +31,7 @@ if(!$_SESSION["validar"]){
   <script type="text/javascript" src="views/vendor/chart.js/Chart.bundle.min.js"></script>
  <script type="text/javascript">
   $(document).ready(function(){
-    
+
     var datos = {
       labels : ["Enero", "Febrero", "Marzo", "Abril", "Mayo","junio"],
       datasets : [{
@@ -54,8 +54,8 @@ if(!$_SESSION["validar"]){
 
 
     var canvas = document.getElementById('chart').getContext('2d');
-    window.bar = new Chart(canvas, {
-      type : "bar",
+    window.radar = new Chart(canvas, {
+      type : "radar",
       data : datos,
       options : {
         elements : {
@@ -77,7 +77,7 @@ if(!$_SESSION["validar"]){
       var newData = [
         [getRandom(),getRandom(),getRandom(),getRandom()*-1,getRandom()],
         [getRandom(),getRandom(),getRandom(),getRandom(),getRandom()],
-        [getRandom(),getRandom(),getRandom(),getRandom(),getRandom()],        
+        [getRandom(),getRandom(),getRandom(),getRandom(),getRandom()],
       ];
 
       $.each(datos.datasets, function(i, dataset){
@@ -86,7 +86,7 @@ if(!$_SESSION["validar"]){
       window.bar.update();
     }, 5000);
 
-    
+
 
 
     function getRandom(){
@@ -96,7 +96,7 @@ if(!$_SESSION["validar"]){
 
   });
   </script>
- <!-- 
+ <!--
   <script type="text/javascript">
   $(document).ready(function(){
     var datos = {

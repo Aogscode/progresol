@@ -31,9 +31,9 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <!-- MENU LATERAL IZQUIERDO-->
 
-      <?php 
-        include "modules/navigation.php";
-       ?>
+      <?php
+include "modules/navigation.php";
+?>
 
       <!-- FIN MENU LATERAL INZQUIERDO-->
 
@@ -51,9 +51,9 @@
 
       <!-- BARRA SUPERIOR BUSQUEDA, MENSAJES Y LOGOUT-->
 
-      <?php 
-        include "modules/topbar.php";
-       ?>
+      <?php
+include "modules/topbar.php";
+?>
 
       <!-- FIN BARRA SUPERIOR BUSQUEDA, MENSAJES Y LOGOUT-->
     </div>
@@ -67,10 +67,10 @@
 
     <!-- CONTENEDOR PRINCIPAL-->
 
-    <?php 
-      $mvc = new MvcController();
-      $mvc -> enlacesPaginasController();
-     ?>
+    <?php
+$mvc = new MvcController();
+$mvc->enlacesPaginasController();
+?>
 
     <!-- FIN CONTENEDOR PRINCIPAL-->
 
@@ -120,9 +120,10 @@
     <!-- sentencias AJAX-->
     <script src="views/js/funciones.js"></script>
     <script src="views/js/validar.js"></script>
+    <script src="views/js/jquery-3.3.1.min.js"></script>
+
   </div>
 
   <!-- FIN CUERPO DE LA WEB-->
 </body>
-
 </html>

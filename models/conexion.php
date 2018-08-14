@@ -1,12 +1,14 @@
 <?php
 
-class Conexion{
+class Conexion
+{
 
-	public function conectar(){
+    public function conectar()
+    {
 
-		$link = new PDO("mysql:host=localhost;dbname=progresol","root","willito");
-		return $link;
+        $link = new PDO("mysql:host=localhost;dbname=progresol", "root", "");
+        return $link;
 
-	}
+    }
 
 }
