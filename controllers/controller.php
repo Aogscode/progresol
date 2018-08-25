@@ -147,5 +147,18 @@ class MvcController{
 
 		return $respuesta;
 	}
+
+	#AGREGAR PUNTOS MAESTRO
+	#-------------------------------------
+	public function agregarPuntosController($idMaestroC, $cantidadC, $idprodC){
+
+		session_start();
+		$userC 	= $_SESSION["id"];
+		$task	= "INSERT";
+
+		$respuesta = Datos::agregarPuntosModel($idMaestroC, $userC, $cantidadC, $idprodC, $task);
+		//return $userC." ".$task;
+		return $respuesta;
+	}
 }
  ?>

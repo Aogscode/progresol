@@ -14,6 +14,13 @@ function validar() {
 
 	var email = document.querySelector("#emailMaestro").value;
 
+	var btn = document.querySelector("#btnRegistrarMaestro").value;
+
+
+			/*funcion para desabilitar el boton al momento de enviar la informacion*/
+
+		
+			/*fin del boton*/
 
 
 				/*validacion para campos en blancos*/
@@ -216,9 +223,8 @@ function validar() {
 
 					return false;
 			}
-
-		/* fin validacion telefono*/
-
+/* fin validacion telefono*/
+		
  return true;
 
 }

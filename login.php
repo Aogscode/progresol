@@ -19,6 +19,8 @@
   <link rel="shortcut icon" href="views/img/company-logo_.png" type="image/jpg" />
 </head>
 
+<!--background="views/img/company-logo_.png-->
+
 <body class="bg-dark">
   <div class="container">
     <!-- DIV DE FORMULARIO DE INGRESO-->
@@ -27,10 +29,12 @@
       <div class="card-body">
         <form id="login" method = "post">
           <div class="form-group">
-            <label for="userLogin">Usuario</label>
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <label for="userLogin" class="">Usuario</label>
             <input class="form-control" id="userLogin" name = "userLogin" type="text" aria-describedby="user" placeholder="Ingrese DNI">
           </div>
           <div class="form-group">
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
             <label for="passLogin">Contraseña</label>
             <input class="form-control" id="passLogin" name = "passLogin" type="password" placeholder="Contraseña">
           </div>

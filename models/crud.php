@@ -152,4 +152,32 @@ class Datos extends Conexion{
 			echo 'error: '.$e->getMessage();
 		}
 	}
+
+	#AGREGAR PUNTOS MAESTRO
+	#-------------------------------------
+	public function agregarPuntosModel($idMaestroM, $userM, $cantidadM, $idprodM, $task){
+		try{
+			//Solo hago el llamado al procedimiento que contiene la logica
+			$stmt = Conexion::conectar()->prepare("CALL sp_register_points(?,?,?,?,?,?,?)");
+			
+			$stmt->bindValue(1, $idMaestroM);	//maestro
+			$stmt->bindValue(2, $userM);		//ferretero
+			$stmt->bindValue(3, $cantidadM);	//cantidad
+			$stmt->bindValue(4, $idprodM);	//producto
+			$stmt->bindValue(5, $task);	//tarea INSERT o UPDATE
+			$stmt->bindValue(6, '0');	//cambio de estado
+			$stmt->bindValue(7, '0');	//id tx
+
+			$stmt->execute();
+
+			$datos = $stmt->fetch(PDO::FETCH_ASSOC);
+
+			return $datos;
+
+			$stmt = null; 
+
+		}catch(Exception $e){
+			echo 'error: '.$e->getMessage();
+		}
+	}
 }

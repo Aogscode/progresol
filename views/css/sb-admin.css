@@ -158,7 +158,7 @@ body.fixed-nav {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    margin-top: 56px;
+    margin-top: 62px;
   }
   #mainNav .navbar-collapse .navbar-sidenav > .nav-item {
     width: 250px;
@@ -359,10 +359,10 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
 
 
 /*aqui va el cambio de color del navbar.*/
-
+  
 @media (min-width: 992px) {
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav {
-    background: #082a4c;
+    background: #343a40;
   }
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
     color: white !important;

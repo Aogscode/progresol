@@ -1,32 +1,7 @@
-<style type="text/css">
-
-.navbar-dark .navbar-collapse .navbar-sidenav {
-
-    background: #103A71!important;
-
-  }
-
-
-  .navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a{
-
-        background: #103A71!important;
-
-  }
-
-#mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a,
-#mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a {
-  color: #0c0c0c!important;
-}
-
-  }
-
-</style>
-
-
 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
     <a class="nav-link" href="index.php">
-      <i class="fa fa-fw fa-dashboard"  style="color: black;"></i>
+      <i class="fa fa-university"  style="color: black;"></i>
       <span class="nav-link-text" style="color: black;">Dashboard</span>
     </a>
   </li>
@@ -46,7 +21,7 @@
 
   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Maestros">
     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#optMaestros" data-parent="#exampleAccordion">
-      <i class="fa fa-fw fa-child" style="color:#060606;"></i>
+      <i class="fa fa-user" style="color:#060606;"></i>
       <span class="nav-link-text" style="color: black;">Maestros</span>
     </a>
     <ul class="sidenav-second-level collapse" id="optMaestros">
@@ -67,7 +42,7 @@
 
   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Ferreterias">
     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#optFerreterias" data-parent="#exampleAccordion">
-      <i class="fa fa-fw fa-building"  style="color: #060606"></i>
+      <i class="fa fa-fw fa-wrench"  style="color: #060606"></i>
       <span class="nav-link-text" style="color: black;">Ferreterias</span>
     </a>
     <ul class="sidenav-second-level collapse" id="optFerreterias">
@@ -82,7 +57,7 @@
 
   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Control">
     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#optControl" data-parent="#exampleAccordion">
-      <i class="fa fa-fw fa-wrench"  style="color: #060606;"></i>
+      <i class="fa fa-cog" aria-hidden="true" style="color: #060606;"></i>
       <span class="nav-link-text" style="color: black;">Control</span>
     </a>
     <ul class="sidenav-second-level collapse" id="optControl">
@@ -100,7 +75,7 @@
 
   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reportes">
     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#optReportes" data-parent="#exampleAccordion">
-      <i class="fa fa-fw fa-file-text"  style="color:#060606;"></i>
+      <i class="fa fa-bar-chart" aria-hidden="true" style="color:#060606;"></i>
       <span class="nav-link-text" style="color: black;">Reportes</span>
     </a>
     <ul class="sidenav-second-level collapse" id="optReportes">

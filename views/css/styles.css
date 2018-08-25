@@ -1,3 +1,32 @@
 #rspta{
 	margin-top: 20px;
 }
+
+
+.bg-dark {
+
+
+    background-color: #399424!important;
+}
+
+.navbar-dark .navbar-collapse .navbar-sidenav {
+    background:#002AFD!important;
+}
+
+
+.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a{
+        background: #002AFD!important;
+  }
+
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a,
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a {
+  color: #0c0c0c!important;
+}
+
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav .nav-link-collapse:after {
+    color: #0c0c0c!important;
+}
+
+.mt-5, .my-5 {
+    margin-top: 6rem!important;
+}

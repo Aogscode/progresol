@@ -18,16 +18,3 @@ echo $_SESSION["empresa"];
       <i class="fa fa-fw fa-sign-out" style="color: black;"></i>Salir</a>
   </li>
 </ul>
-
-<style type="text/css">
-
-
-.bg-dark {
-
-
-    background-color: #71BD44!important;
-}
-
-
-
-</style>

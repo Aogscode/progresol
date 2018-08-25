@@ -1,23 +1,23 @@
-<?php 
+<?php
 
-  if(!$_SESSION["validar"]){
+if (!$_SESSION["validar"]) {
 
-  header("location:ingresar");
+    header("location:ingresar");
 
-  exit();
+    exit();
 
-  }
+}
 
- ?>
+?>
 
  <div class="container-fluid">
   <!-- Breadcrumbs-->
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
       <a href="index.php">
-        <?php 
-          echo $_SESSION["usuario"];
-         ?>
+        <?php
+echo $_SESSION["usuario"];
+?>
       </a>
     </li>
     <li class="breadcrumb-item active">Agregar puntos</li>
@@ -38,7 +38,7 @@
           <input type="text" id="buscaDni" name="buscaDni" class="form-control" placeholder="Documento de Identidad (DNI)">
           <span class="input-group-btn">
           <button id="btnConsultarDni" class="btn btn-default" type="submit">
-            <i class="fa fa-search"></i> 
+            <i class="fa fa-search"></i>
           </button>
         </div>
       </form>
@@ -47,10 +47,10 @@
   </div>
   <!-- FORMULARIO 1 - CONSULTA DE DNI -->
 
-  <!-- FORMULARIO 2 - CAPTURA DE DATOS PARA REGISTRO-->
+  <!-- FORMULARIO 2 - CAPTURA DE DATOS PARA REGISTRO DE PUNTOS-->
   <div class="row">
     <div class="col-md-9">
-      <form id="registrar-puntos" action="">
+      <form id="registrar-puntos" method="post">
 
         <input type="text" id="ptosId" name="ptosId" class="form-control" disabled hidden>
 
@@ -78,13 +78,13 @@
           <label for="ptosPendientes"><b>Puntos por aprobar</b></label>
           <input type="text" id="ptosPendientes" name="ptosPendientes" class="form-control" disabled>
         </div>
-        
+
         <div class="row">
           <div class="col-lg-12">
           <h3>Registro de compra</h3>
         </div>
         </div>
-        
+
         <div class="form-group">
           <label for="productos">Producto</label>
           <select id="productos" class="form-control">
@@ -107,12 +107,12 @@
         </div>
 
         <div class="form-group">
-          <button type="button" id="btnRegistrarPuntos" class="btn btn-primary btn-lg btn-block">Registrar puntos</button>
+          <button type="submit" id="btnRegistrarPuntos" class="btn btn-primary btn-lg btn-block">Registrar puntos</button>
         </div>
 
       </form>
     </div>
   </div>
-  <!-- FORMULARIO 2 - CAPTURA DE DATOS PARA REGISTRO-->
+  <!-- FORMULARIO 2 - CAPTURA DE DATOS PARA REGISTRO DE PUNTOS-->
 
 </div>
