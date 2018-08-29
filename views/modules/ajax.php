@@ -96,6 +96,29 @@ class Ajax{
   		echo json_encode($jsondata, JSON_FORCE_OBJECT);
 	}
 
+	public function registrarUsuarioAjax($dniUsuario,$nombreUsuario,$apepatUsuario,
+								$apematUsuario,$telfUsuario,$emailUsuario, $permisoUsuario){
+		//Declaro array para JSON
+		$jsondata = array();
+
+		$respuesta = MvcController::registrarUsuarioController($dniUsuario,$nombreUsuario,$apepatUsuario,
+																	$apematUsuario,$telfUsuario,$emailUsuario, $permisoUsuario);
+		//echo $respuesta;
+		
+		if ($respuesta["success"] == 1) {
+			//asigno valor a exito que sera consultada en el retorno del ajax
+			$jsondata["exito"] = true;
+			
+		}else{
+			$jsondata["exito"] = false;
+			$jsondata["msg"] = $respuesta["message"];
+		}
+
+		//Asgino formato JSON para devolver el array y que pueda ser leido por el ajax
+		header('Content-type: application/json; charset=utf-8');
+  		echo json_encode($jsondata, JSON_FORCE_OBJECT);
+	}
+
 	public function agregarPuntosAjax($idMaestro, $cantidad, $idprod){
 
 		$jsondata = array();
@@ -171,7 +194,7 @@ if (isset($_POST["buscaDni"])){
 }
 
 /* ---------------------------------------
-REGISTRAR MAESTRO DE OBRA
+		REGISTRAR MAESTRO DE OBRA
 ------------------------------------------*/
 if(isset($_POST["dniMaestro"]) && isset($_POST["telfMaestro"])){
 	//$registro = array(
@@ -186,6 +209,24 @@ if(isset($_POST["dniMaestro"]) && isset($_POST["telfMaestro"])){
 	$a = new Ajax();
 	$a -> registrarMaestroAjax($dniMaestro,$nombreMaestro,$apepatMaestro,
 								$apematMaestro,$dirMaestro,$telfMaestro,$emailMaestro);
+}
+
+/* ---------------------------------------
+		REGISTRAR NUEVO USUARIO
+------------------------------------------*/
+if(isset($_POST["dniUsuario"]) && isset($_POST["permisoUsuario"])){
+	//$registro = array(
+		$dniUsuario 	= $_POST["dniUsuario"];
+		$nombreUsuario 	= $_POST["nombreUsuario"];
+		$apepatUsuario 	= $_POST["apepatUsuario"];
+		$apematUsuario 	= $_POST["apematUsuario"];
+		$telfUsuario 	= $_POST["telfUsuario"];
+		$emailUsuario 	= $_POST["emailUsuario"];
+		$permisoUsuario = $_POST["permisoUsuario"];
+		
+	$a = new Ajax();
+	$a -> registrarUsuarioAjax($dniUsuario,$nombreUsuario,$apepatUsuario,
+								$apematUsuario,$telfUsuario,$emailUsuario, $permisoUsuario);
 }
 
 /* ---------------------------------------

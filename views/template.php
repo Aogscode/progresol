@@ -32,7 +32,14 @@
       <!-- MENU LATERAL IZQUIERDO-->
 
       <?php
-include "modules/navigation.php";
+      if ($_SESSION["perfil"] == 1) {
+        include "modules/navigation.php";
+      }elseif ($_SESSION["perfil"] == 2) {
+        include "modules/navigation2.php";
+      }elseif ($_SESSION["perfil"] == 3) {
+        include "modules/navigation3.php";
+      }
+//include "modules/navigation.php";
 ?>
 
       <!-- FIN MENU LATERAL INZQUIERDO-->

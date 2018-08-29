@@ -40,36 +40,6 @@
     </ul>
   </li>
 
-  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Ferreterias">
-    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#optFerreterias" data-parent="#exampleAccordion">
-      <i class="fa fa-fw fa-wrench"  style="color: #060606"></i>
-      <span class="nav-link-text" style="color: black;">Ferreterias</span>
-    </a>
-    <ul class="sidenav-second-level collapse" id="optFerreterias">
-      <li>
-        <a href="reporteFerreterias">Reporte ferreterias</a>
-      </li>
-    </ul>
-  </li>
-
-  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Control">
-    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#optControl" data-parent="#exampleAccordion">
-      <i class="fa fa-cog" aria-hidden="true" style="color: #060606;"></i>
-      <span class="nav-link-text" style="color: black;">Control</span>
-    </a>
-    <ul class="sidenav-second-level collapse" id="optControl">
-      <li>
-        <a href="crearUsuario">Crear usuario</a>
-      </li>
-      <li>
-        <a href="reporteUsuarios">Reporte de usuarios</a>
-      </li>
-      <li>
-        <a href="validarPuntos">Validar puntos</a>
-      </li>
-    </ul>
-  </li>
-
   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reportes">
     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#optReportes" data-parent="#exampleAccordion">
       <i class="fa fa-bar-chart" aria-hidden="true" style="color:#060606;"></i>

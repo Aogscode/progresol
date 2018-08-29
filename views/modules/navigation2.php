@@ -59,13 +59,7 @@
     </a>
     <ul class="sidenav-second-level collapse" id="optControl">
       <li>
-        <a href="crearUsuario">Crear usuario</a>
-      </li>
-      <li>
         <a href="reporteUsuarios">Reporte de usuarios</a>
-      </li>
-      <li>
-        <a href="validarPuntos">Validar puntos</a>
       </li>
     </ul>
   </li>

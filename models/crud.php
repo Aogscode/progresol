@@ -153,6 +153,57 @@ class Datos extends Conexion{
 		}
 	}
 
+	#REGISTRAR USUARIO
+	#-------------------------------------
+	public function registrarUsuarioModel($userM,$dniM,$nombreM,$apepatM,
+										$apematM,$telfM,$emailM, $permisoM){
+		$companyM = null;
+
+		if ($permisoM == 1) {
+			$companyM = "UNACEM";
+		} else {
+			$companyM = "Promotick / Lucky";
+		}
+		
+		//echo $userM." - ".$permisoM." - ".$companyM." - ".$dni;
+		
+		try{
+			//Solo hago el llamado al procedimiento que contiene la logica
+			$stmt = Conexion::conectar()->prepare("CALL sp_users(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+			$stmt->bindValue(1, $userM);	//id_user
+			$stmt->bindValue(2, NULL);	//id update
+			$stmt->bindValue(3, $permisoM);	//perfil usuario
+			$stmt->bindValue(4, $nombreM);	//nombres
+			$stmt->bindValue(5, $apepatM);	//apepat
+			$stmt->bindValue(6, $apematM);	//apemat
+			$stmt->bindValue(7, $companyM);	//company
+			$stmt->bindValue(8, "--");	//direccion
+			$stmt->bindValue(9, $telfM);	//celular
+			$stmt->bindValue(10, $emailM);	//correo
+			$stmt->bindValue(11, '1501');	//distrito
+			$stmt->bindValue(12, null);	//zona
+			$stmt->bindValue(13, $dniM);	//dni
+			$stmt->bindValue(14, '0');	//ruc
+			$stmt->bindValue(15, $dniM);	//clave
+			$stmt->bindValue(16, null);	//lucky
+			$stmt->bindValue(17, '0');	//idpromotick
+			$stmt->bindValue(18, '1');	//estado
+			$stmt->bindValue(19, 'CREATE');	//tarea: CREATE o UPDATE
+
+			$stmt->execute();
+
+			$datos = $stmt->fetch(PDO::FETCH_ASSOC);
+
+			return $datos;
+
+			$stmt = null;
+		}catch(Exception $e){
+			echo 'error: '.$e->getMessage();
+		}
+
+	}
+
 	#AGREGAR PUNTOS MAESTRO
 	#-------------------------------------
 	public function agregarPuntosModel($idMaestroM, $userM, $cantidadM, $idprodM, $task){

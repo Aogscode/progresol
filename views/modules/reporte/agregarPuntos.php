@@ -42,7 +42,7 @@
           </button>
         </div>
       </form>
-      <div id="ptos-rspta"></div>
+      <div id="buscar-rspta"></div>
     </div>
   </div>
   <!-- FORMULARIO 1 - CONSULTA DE DNI -->

@@ -148,6 +148,20 @@ class MvcController{
 		return $respuesta;
 	}
 
+	#REGISTRAR USUARIO
+	#-------------------------------------
+	public function registrarUsuarioController($dniUsuario,$nombreUsuario,$apepatUsuario,
+												$apematUsuario,$telfUsuario,$emailUsuario, $permisoUsuario){
+		session_start();
+		$userC 		= $_SESSION["id"];
+
+		$respuesta = Datos::registrarUsuarioModel($userC,$dniUsuario,$nombreUsuario,$apepatUsuario,
+												$apematUsuario,$telfUsuario,$emailUsuario, $permisoUsuario);
+
+		return $respuesta;
+
+	}
+
 	#AGREGAR PUNTOS MAESTRO
 	#-------------------------------------
 	public function agregarPuntosController($idMaestroC, $cantidadC, $idprodC){
