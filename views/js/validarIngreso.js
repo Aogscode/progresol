@@ -7,12 +7,10 @@ $("#login").submit(function(event){
 	//capturo los datos del formulario
 	var usuario = $("#userLogin").val();
 	var clave = $("#passLogin").val();
-
 	//adjunto datos para enviar
 	var datos = new FormData();
 	datos.append("validarUsuario",usuario);
 	datos.append("validarClave", clave);
-
 	//conectar a la BBDD con ajax
 	$.ajax({
 		url:"views/modules/ajax.php",

@@ -6,19 +6,6 @@
     </a>
   </li>
 
-  <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-    <a class="nav-link" href="charts.html">
-      <i class="fa fa-fw fa-area-chart"></i>
-      <span class="nav-link-text">Charts</span>
-    </a>
-  </li>
-  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-    <a class="nav-link" href="tables.html">
-      <i class="fa fa-fw fa-table"></i>
-      <span class="nav-link-text">Tables</span>
-    </a>
-  </li> -->
-
   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Maestros">
     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#optMaestros" data-parent="#exampleAccordion">
       <i class="fa fa-user" style="color:#060606;"></i>
@@ -80,7 +67,7 @@
         <a href="reporteHistorial">Historial de puntos</a>
       </li>
       <li>
-        <a href="#">Reporte2</a>
+        <a href="#">Participación de mercado</a>
       </li>
       <li>
         <a href="#">Reporte3</a>

@@ -2,6 +2,7 @@
 require_once "models/enlaces.php";
 require_once "models/conexion.php";
 require_once "controllers/controller.php";
+require_once "models/crud.php";
 
 session_start();
 //session_destroy();

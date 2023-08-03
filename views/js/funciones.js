@@ -28,7 +28,7 @@ $("#buscar-maestro").submit(function(event){
 		success: function(respuesta){
 
 			if(respuesta == 1){
-				
+				alert('devolvio datos');
 				var msg = '<div class="alert alert-success" role="alert">Usuario YA se encuentra registrado</div>';
 				$('#buscar-rspta').html(msg);
 			}
@@ -94,6 +94,47 @@ $("#busca-usuario").submit(function(event){
 		}
 	});
 });
+
+/*=============================================
+	CONSULTAR MAESTRO POR DNI 
+=============================================*/
+//Hago la consulta por el numero de DNI
+$("#consulta-maestro").submit(function(event){
+	event.preventDefault();
+	
+	var dni = $("#ConsultaDni").val().trim();
+	var datos = new FormData();
+	alert('dentro del metodo: ' + dni);
+	datos.append("dni",dni);
+	//Hago llamada al ajax
+	$.ajax({
+		url:"views/modules/ajax.php",
+		method:"POST",
+		data: datos,
+		cache:false,
+		contentType: false,
+		processData: false,
+		success: function(respuesta){
+
+			if(respuesta == 1){
+				alert('devolvio datos: '+ respuesta);
+				//$("#ptosId").val(respuesta.codMaestro);
+				//$("#cNombres").val('willito');
+			}
+			else{
+				alert('Error');
+				var msg = '<div class="alert alert-warning" role="alert">Usuario No se encuentra registrado</div>';
+				$('#buscar-rspta').html(msg);	
+
+			}
+		},
+		error: function(){
+			alert("error en el servidor");
+		}
+	});
+});
+
+
 
 /*=============================================
 BUSCAR MAESTRO POR DNI PARA AGREGAR PUNTOS
@@ -386,10 +427,37 @@ $("#consultar-ferreteria").submit(function(event){
 });
 
 /*=============================================
+	CARGAR COMBOBOX DE DEPARTAMENTOS
+=============================================*/
+$('document').ready(cargaDepartamentos());
+function cargaDepartamentos(){
+	var datos = new FormData();
+	datos.append("lista","departamentos");
+
+	$.ajax({
+		url:"views/modules/ajax.php",
+		method:"POST",
+		data: datos,
+		cache:false,
+		contentType: false,
+		processData: false,
+		success: function(respuesta){
+			$("#departamentos").html(respuesta);
+		},
+		error: function(){
+			alert("error en el servidor");
+		}
+	});
+};
+
+
+/*=============================================
 	CARGAR COMBOBOX DE ZONAS
 =============================================*/
-function cargaZona(){
+//$("#ptosZona").click(cargaZona());
+$('document').ready(cargaZona());
 
+function cargaZona(){
 	var datos = new FormData();
 	datos.append("lista","zonas");
 
@@ -401,13 +469,13 @@ function cargaZona(){
 		contentType: false,
 		processData: false,
 		success: function(respuesta){
-			$("#zonaFerreteria").html(respuesta);
+			$("#ptosZona").html(respuesta);
 		},
 		error: function(){
 			alert("error en el servidor");
 		}
 	});
-}
+};
 
 /*=============================================
 	CARGAR COMBOBOX DE PRODUCTOS
@@ -431,7 +499,7 @@ function cargaProductos(){
 			alert("error en el servidor");
 		}
 	});
-}
+};
 
 /*=============================================
 	FUNCIONES QUE SUMA Y RESTA UNIDADES
@@ -453,4 +521,306 @@ function addUnidades(){
 	}
 
 	$("#unidproduct").val(newval);
+};
+
+/***********************************************************************************/
+//----------------------------FUNCIONES DE REPORTES---------------------------------
+/***********************************************************************************/
+
+/*=============================================
+	REPORTE DE VALIDACION DE PUNTOS
+=============================================*/
+$("#btn_validaPuntos").on("click", function(event){
+
+    document.getElementById("contenedor_table_valida").style.display="block";
+    var desde   = $("#validaDesde").val().trim();
+    var hasta   = $("#validaHasta").val().trim();
+    var zona    = $("#ptosZona").val().trim();
+    var estado  = $("#maestroEstado").val().trim();
+
+    //alert("desde: "+desde+" hasta: "+hasta+" zona: "+zona+" estado: "+estado);
+   
+    if (desde > hasta) {
+        alert("rango de fechas incorrecto, por favor verifique");
+    }else{
+    	$('#validador_puntos').DataTable().destroy();
+    	fetch_valida("v",desde, hasta, zona, estado);
+        //alert("Debe ingresar ambas fechas");
+    }
+
+});
+
+function fetch_valida(flag, start_date='', end_date='', selected_zone='',selected_state=''){
+    var dataTable = $('#validador_puntos').DataTable({
+        
+        "processing" : true,
+        dom: 'lBfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5'
+                ],
+        "language": {
+                "lengthMenu": 	"Mostrar _MENU_ registros por pagina",
+                "zeroRecords": 	"Ningun valor encontrado",
+                "info":  		"Mostrando _START_ de _END_ de _TOTAL_ entradas",
+                "infoEmpty": 	"No se encontraron registros",
+                "search": 		"Buscar:",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                "processing": 	"Procesando...",
+                "paginate": {
+                				"first": "Primero",
+                				"last": "Ultimo",
+                				"next": "Siguiente",
+                				"previous": "Anterior",
+                }
+            },
+
+         // "ajax":"views/modules/buscador_puntos.php",
+        //"ajax":"views/modules/buscador_puntos.php?from=2018-10-01&to=2018-10-31&zone=0&state=1",
+        "ajax":"views/modules/buscador.php?flag="+flag+"&from="+start_date+"&to="+end_date+"&zone="+selected_zone+"&state="+selected_state,
+        "autoWidth": false
+    });
+};
+
+//Funcion que valida
+function valida_punto(id, estado){
+	var datos = new FormData();
+	datos.append("id",id);
+	datos.append("estado",estado);
+
+	$.ajax({
+		url:"views/modules/buscador.php",
+		method:"POST",
+		data: datos,
+		cache:false,
+		contentType: false,
+		processData: false,
+		success: function(respuesta){
+			if (estado = 0) {
+				$('a[data-id='+id+'a]').css('display','none');
+			}else{
+				$('a[data-id='+id+'r]').css('display','none');
+			}
+			//$('a[data-id='+id+']').css('display','none')
+		},
+		error: function(){
+			alert("error en el servidor");
+		}
+	});
 }
+
+// Aprobacion o rechazo de puntos
+$('#validador_puntos').on( "click" , '.botonvalidar', function(){
+
+	var validar = $(this).data('validar');
+	var id = $(this).data('id');
+
+	if(validar){
+		var text = 'confirmar';
+	}else{
+		var text = 'cancelar';
+	}		
+
+	//event.preventDefault();
+
+	if (confirm("¿Esta seguro de " + text + " los puntos con ID : "+id+"?") == true){
+		//alert("Punto confirmado");
+		valida_punto(id, validar);
+	}else{
+		return false;
+	}
+				
+});
+
+/*=============================================
+	REPORTE DE UNIVERSO DE MAESTROS
+=============================================*/
+$("#btn_reporteMaestros").on("click", function(event){
+
+    document.getElementById("contenedor_table_maestros").style.display="block";
+    var desde   = $("#maestroDesde").val().trim();
+    var hasta   = $("#maestroHasta").val().trim();
+    var zona    = $("#ptosZona").val().trim();
+    var estado  = $("#maestroEstado").val().trim();
+
+    //alert("desde: "+desde+" hasta: "+hasta+" zona: "+zona+" estado: "+estado);
+   
+    if (desde > hasta) {
+        alert("rango de fechas incorrecto, por favor verifique");
+    }else{
+    	$('#reporte_maestros').DataTable().destroy();
+    	fetch_maestros("m",desde, hasta, zona, estado);
+        //alert("Debe ingresar ambas fechas");
+    }
+
+});
+
+function fetch_maestros(flag, start_date='', end_date='', selected_zone='',selected_state=''){
+    var dataTable = $('#reporte_maestros').DataTable({
+        
+        "processing" : true,
+        dom: 'lBfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5'
+                ],
+        "language": {
+                "lengthMenu": 	"Mostrar _MENU_ registros por pagina",
+                "zeroRecords": 	"Ningun valor encontrado",
+                "info":  		"Mostrando _START_ de _END_ de _TOTAL_ entradas",
+                "infoEmpty": 	"No se encontraron registros",
+                "search": 		"Buscar:",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                "processing": 	"Procesando...",
+                "paginate": {
+                				"first": "Primero",
+                				"last": "Ultimo",
+                				"next": "Siguiente",
+                				"previous": "Anterior",
+                }
+            },
+
+         // "ajax":"views/modules/buscador_puntos.php",
+        //"ajax":"views/modules/buscador_puntos.php?from=2018-10-01&to=2018-10-31&zone=0&state=1",
+        "ajax":"views/modules/buscador.php?flag="+flag+"&from="+start_date+"&to="+end_date+"&zone="+selected_zone+"&state="+selected_state,
+        "autoWidth": false
+    });
+};
+
+/*=============================================
+	REPORTE DE FERRETERIAS DEL PROGRAMA
+=============================================*/
+$("#btn_reporteFerr").on("click", function(event){
+
+    document.getElementById("contenedor_table_ferr").style.display="block";
+    var desde   = $("#ferrDesde").val().trim();
+    var hasta   = $("#ferrHasta").val().trim();
+    var zona    = $("#ptosZona").val().trim();
+    var estado  = $("#ferrEstado").val().trim();
+
+    //alert("desde: "+desde+" hasta: "+hasta+" zona: "+zona+" estado: "+estado);
+   
+    if (desde > hasta) {
+        alert("rango de fechas incorrecto, por favor verifique");
+    }else{
+    	$('#reporte_Ferreteria').DataTable().destroy();
+    	fetch_ferreterias("f",desde, hasta, zona, estado);
+        //alert("Debe ingresar ambas fechas");
+    }
+
+
+});
+
+function fetch_ferreterias(flag, start_date='', end_date='', selected_zone='',selected_state=''){
+    var dataTable = $('#reporte_Ferreteria').DataTable({
+        
+        "processing" : true,
+        dom: 'lBfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5'
+                ],
+        "language": {
+                "lengthMenu": 	"Mostrar _MENU_ registros por pagina",
+                "zeroRecords": 	"Ningun valor encontrado",
+                "info":  		"Mostrando _START_ de _END_ de _TOTAL_ entradas",
+                "infoEmpty": 	"No se encontraron registros",
+                "search": 		"Buscar:",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                "processing": 	"Procesando...",
+                "paginate": {
+                				"first": "Primero",
+                				"last": "Ultimo",
+                				"next": "Siguiente",
+                				"previous": "Anterior",
+                }
+            },
+
+         // "ajax":"views/modules/buscador_puntos.php",
+        //"ajax":"views/modules/buscador_puntos.php?from=2018-10-01&to=2018-10-31&zone=0&state=1",
+        //"ajax":"views/modules/buscador_maestros.php?&from="+start_date+"&to="+end_date+"&zone="+selected_zone+"&state="+selected_state,
+        "ajax":"views/modules/buscador.php?flag="+flag+"&from="+start_date+"&to="+end_date+"&zone="+selected_zone+"&state="+selected_state,
+        "autoWidth": false
+    });
+};
+
+
+/*=============================================
+	REPORTE DE HISTORIAL DE PUNTOS
+=============================================*/
+
+$("#btn_buscaPtos").on("click", function(event){
+
+    document.getElementById("contenedor_table").style.display="block";
+    var desde   = $("#ptosDesde").val().trim();
+    var hasta   = $("#ptosHasta").val().trim();
+    var zona    = $("#ptosZona").val().trim();
+    var estado  = $("#ptosEstado").val().trim();
+
+    //alert("desde: "+desde+" hasta: "+hasta+" zona: "+zona+" estado: "+estado);
+    
+    if (desde !='' && hasta!='') {
+        $('#historial_puntos').DataTable().destroy();
+        fetch_data("yes",desde, hasta, zona, estado);
+    }else{
+        alert("Debe ingresar ambas fechas");
+    }
+    //alert("desde: "+desde+" hasta: "+hasta+" zona: "+zona+" estado: "+estado);
+});
+
+function fetch_data(is_date_search, start_date='', end_date='', selected_zone='',selected_state=''){
+    var dataTable = $('#historial_puntos').DataTable({
+        
+        "processing" : true,
+        dom: 'lBfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5'
+                    //'pdfHtml5'
+                ],
+        /*"language": {
+        		"decimal":        "",
+			    "emptyTable":     "No hay datos que mostrar",
+			    "info":           "Mostrando _START_ de _END_ de _TOTAL_ entradas",
+			    "infoEmpty":      "Showing 0 to 0 of 0 entries",
+			    "infoFiltered":   "(filtered from _MAX_ total entries)",
+			    "infoPostFix":    "",
+			    "thousands":      ",",
+			    "lengthMenu":     "Show _MENU_ entries",
+			    "loadingRecords": "Loading...",
+			    "processing":     "Processing...",
+			    "search":         "Search:",
+			    "zeroRecords":    "No matching records found",
+			    "paginate": {
+			        "first":      "First",
+			        "last":       "Last",
+			        "next":       "Next",
+			        "previous":   "Previous"
+			    },
+            },*/
+        "language": {
+                "lengthMenu": 	"Mostrar _MENU_ registros por pagina",
+                "zeroRecords": 	"Ningun valor encontrado",
+                "info":  		"Mostrando _START_ de _END_ de _TOTAL_ entradas",
+                "infoEmpty": 	"No se encontraron registros",
+                "search": 		"Buscar:",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                "processing": 	"Procesando...",
+                "paginate": {
+                				"first": "Primero",
+                				"last": "Ultimo",
+                				"next": "Siguiente",
+                				"previous": "Anterior",
+                }
+            },
+
+         // "ajax":"views/modules/buscador_puntos.php",
+        //"ajax":"views/modules/buscador_puntos.php?search=yes&from=2018-07-07&to=2018-09-09&zone=0&state=1",
+        "ajax":"views/modules/buscador_puntos.php?search="+is_date_search+"&from="+start_date+"&to="+end_date+"&zone="+selected_zone+"&state="+selected_state,
+        "autoWidth": false
+    });
+};

@@ -9,6 +9,11 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Club de Maestros Progresol</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
   <!-- Bootstrap core CSS-->
   <link href="views/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -16,6 +21,10 @@
   <!-- Custom styles for this template-->
   <link href="views/css/sb-admin.css" rel="stylesheet">
   <link href="views/css/styles.css" rel="stylesheet">
+  <!-- Datatables style-->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.4/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.2/css/responsive.bootstrap4.min.css">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -118,7 +127,8 @@ $mvc->enlacesPaginasController();
       </div>
     </div>
     <!-- Bootstrap core JavaScript-->
-    <script src="views/vendor/jquery/jquery.min.js"></script>
+    <script src="views/js/jquery-3.3.1.min.js"></script>
+    <!--<script src="views/vendor/jquery/jquery.min.js"></script>-->
     <script src="views/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="views/vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -127,10 +137,28 @@ $mvc->enlacesPaginasController();
     <!-- sentencias AJAX-->
     <script src="views/js/funciones.js"></script>
     <script src="views/js/validar.js"></script>
-    <script src="views/js/jquery-3.3.1.min.js"></script>
-
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.bootstrap4.min.js"></script>
+    <script type="text/javascript" language="javascript" src="views/js/jszip.minB4.js"></script> 
+    <script type="text/javascript" language="javascript" src="views/js/pdfmake.minB4.js"></script>
+    <script type="text/javascript" language="javascript" src="views/js/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.2/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.2/js/responsive.bootstrap4.min.js"></script>
+    <!--<script src="views/dtjs/datatableBuild.js"></script>-->
+    
   </div>
 
   <!-- FIN CUERPO DE LA WEB-->
+  <script>
+    /*$('document').ready(inicio());
+    function inicio(){
+      $('nav').toggleClass('navbar-dark navbar-light');
+      $('nav').toggleClass('bg-dark bg-light');
+      $('body').toggleClass('bg-dark bg-light');
+    };*/
+  </script>
 </body>
 </html>
